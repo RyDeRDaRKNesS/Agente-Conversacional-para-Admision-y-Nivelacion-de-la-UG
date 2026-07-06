@@ -1,0 +1,203 @@
+{
+  "intents": [
+    {
+      "tag": "saludo",
+      "utterances": [
+        "hola",
+        "buenas",
+        "buenos dias",
+        "buenas tardes",
+        "hola como estas",
+        "hey",
+        "que tal",
+        "hola necesito ayuda"
+      ],
+      "respuestas": [
+        "¡Hola! Soy el asistente virtual de Admisión y Nivelación de la UG. ¿En qué puedo ayudarte hoy?"
+      ]
+    },
+    {
+      "tag": "despedida",
+      "utterances": [
+        "adios",
+        "chao",
+        "hasta luego",
+        "nos vemos",
+        "gracias eso es todo",
+        "listo gracias",
+        "bye"
+      ],
+      "respuestas": [
+        "¡Hasta luego! Si tienes otra duda sobre admisión o nivelación, aquí estaré."
+      ]
+    },
+    {
+      "tag": "agradecimiento",
+      "utterances": [
+        "gracias",
+        "muchas gracias",
+        "te lo agradezco",
+        "gracias por la info",
+        "muy amable gracias"
+      ],
+      "respuestas": [
+        "¡Con gusto! Cualquier otra consulta sobre admisión o nivelación, aquí estoy."
+      ]
+    },
+    {
+      "tag": "preguntar_requisitos_admision",
+      "utterances": [
+        "cuales son los requisitos de admision",
+        "que necesito para inscribirme en la ug",
+        "requisitos para postular a la universidad",
+        "que documentos piden para admision",
+        "como me inscribo en la ug",
+        "que necesito para aplicar a una carrera",
+        "requisitos de inscripcion universidad de guayaquil",
+        "que pide la ug para admision"
+      ],
+      "respuestas": [
+        "Para el proceso de admisión debes crear tu cuenta en el portal oficial de admisión (admision.ug.edu.ec/admision/), tener tu cédula de identidad, título de bachiller y cumplir con el cronograma de registro. Los requisitos generales detallados se publican en ese portal."
+      ]
+    },
+    {
+      "tag": "explicar_creacion_cuenta",
+      "utterances": [
+        "como creo mi cuenta de aspirante",
+        "no puedo crear mi cuenta en el portal",
+        "como me registro en el sistema de admision",
+        "quiero crear un usuario en admision ug",
+        "pasos para crear cuenta de aspirante",
+        "registro de nuevo usuario admision"
+      ],
+      "respuestas": [
+        "La creación de cuenta se realiza exclusivamente en el portal oficial admision.ug.edu.ec/admision/, ingresando tu número de cédula y correo electrónico. El sistema te guiará para establecer una contraseña y completar tus datos personales."
+      ]
+    },
+    {
+      "tag": "consultar_fechas_nivelacion",
+      "utterances": [
+        "cuando empieza la nivelacion",
+        "fechas del curso de nivelacion",
+        "cuando son las clases de nivelacion",
+        "calendario de nivelacion 2026",
+        "cuando inicia el periodo de nivelacion",
+        "hasta cuando dura la nivelacion"
+      ],
+      "respuestas": [
+        "Las fechas del curso de nivelación se publican en admision.ug.edu.ec/nivelacion/. El cronograma exacto varía cada periodo, por lo que te recomendamos revisar el calendario oficial vigente en esa página."
+      ]
+    },
+    {
+      "tag": "consultar_fechas_registro",
+      "utterances": [
+        "cuando es el registro de aspirantes",
+        "fechas de matricula",
+        "cuando puedo matricularme",
+        "calendario de registro por cedula",
+        "cuando me toca registrarme segun mi cedula",
+        "fechas de inscripcion 2026"
+      ],
+      "respuestas": [
+        "El cronograma de registro está segmentado por el último dígito de tu cédula y se publica en el portal oficial admision.ug.edu.ec/admision/. Ahí encontrarás la fecha exacta que te corresponde."
+      ]
+    },
+    {
+      "tag": "consultar_cupos",
+      "utterances": [
+        "cuantos cupos hay para mi carrera",
+        "hay cupos disponibles",
+        "como se asignan los cupos",
+        "que pasa si no hay cupo en mi carrera",
+        "cupo aceptado que significa",
+        "como saber si tengo cupo"
+      ],
+      "respuestas": [
+        "La asignación de cupos depende del cumplimiento de requisitos y disponibilidad por carrera. El estado de tu cupo (por ejemplo 'cupo aceptado') se notifica dentro de tu cuenta en el portal oficial de admisión."
+      ]
+    },
+    {
+      "tag": "aceptacion_carrera",
+      "utterances": [
+        "como acepto mi carrera",
+        "donde confirmo mi carrera asignada",
+        "que hago si me asignaron una carrera",
+        "como confirmo mi cupo",
+        "pasos para aceptar la carrera asignada"
+      ],
+      "respuestas": [
+        "La aceptación de carrera se confirma directamente en tu cuenta del portal de admisión, dentro del plazo establecido en el cronograma oficial. Si no aceptas dentro del plazo, puedes perder el cupo asignado."
+      ]
+    },
+    {
+      "tag": "consultar_aprobacion_asignaturas",
+      "utterances": [
+        "como se aprueban las materias de nivelacion",
+        "cual es la nota minima para aprobar nivelacion",
+        "que pasa si pierdo una materia en nivelacion",
+        "requisitos para aprobar el curso de nivelacion",
+        "como funciona la aprobacion de asignaturas"
+      ],
+      "respuestas": [
+        "Los criterios de aprobación de los cursos de nivelación, incluyendo notas mínimas y seguimiento académico, están detallados en admision.ug.edu.ec/nivelacion/."
+      ]
+    },
+    {
+      "tag": "consultar_asistencia",
+      "utterances": [
+        "cuantas faltas puedo tener en nivelacion",
+        "como se controla la asistencia en nivelacion",
+        "que pasa si falto a clases de nivelacion",
+        "hay control de asistencia en el curso de nivelacion"
+      ],
+      "respuestas": [
+        "El control de asistencias del curso de nivelación se gestiona a través de la página oficial admision.ug.edu.ec/nivelacion/, donde se detallan los porcentajes permitidos de inasistencia."
+      ]
+    },
+    {
+      "tag": "consultar_documentos",
+      "utterances": [
+        "que documentos debo subir al portal",
+        "necesito escanear mi cedula para el registro",
+        "que archivos pide el sistema de admision",
+        "documentos necesarios para nivelacion"
+      ],
+      "respuestas": [
+        "Generalmente se solicita cédula de identidad, título de bachiller o certificado de estar cursando el último año, y una fotografía. El listado exacto y actualizado está en el portal oficial de admisión."
+      ]
+    },
+    {
+      "tag": "consultar_carreras",
+      "utterances": [
+        "que carreras ofrece la ug",
+        "cuales son las carreras disponibles",
+        "hay ciencia de datos en la ug",
+        "que facultades tiene la universidad de guayaquil",
+        "lista de carreras de la ug"
+      ],
+      "respuestas": [
+        "La Universidad de Guayaquil ofrece carreras en múltiples facultades, incluyendo Ciencia de Datos e Inteligencia Artificial en la Facultad de Ciencias Matemáticas y Físicas. El listado completo y actualizado está en el portal oficial de admisión."
+      ]
+    },
+    {
+      "tag": "consultar_canales_contacto",
+      "utterances": [
+        "donde puedo preguntar dudas de admision",
+        "hay algun facebook de admision",
+        "como contacto a coordinacion de nivelacion",
+        "redes sociales oficiales de admision ug",
+        "donde sigo las noticias de matricula"
+      ],
+      "respuestas": [
+        "Puedes seguir los canales oficiales: Facebook 'Admisión UG' para comunicados sobre registro y matriculación, e Instagram 'Coordinación de Admisión y Nivelación' para material explicativo sobre el proceso."
+      ]
+    },
+    {
+      "tag": "fallback",
+      "utterances": [],
+      "respuestas": [
+        "Lo siento, no entendí tu consulta. ¿Puedes reformularla? Puedo ayudarte con temas de admisión, creación de cuenta, fechas de nivelación, cupos, aceptación de carrera y más."
+      ]
+    }
+  ]
+}

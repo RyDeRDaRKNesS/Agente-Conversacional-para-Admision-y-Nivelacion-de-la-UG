@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asistente de Admisión y Nivelación · UG</title>
+<style>
+  :root {
+    --azul-ug: #14213D;
+    --azul-claro: #1F3A63;
+    --dorado: #C9A24B;
+    --crema: #F6F3EC;
+    --texto-suave: #5A5F6B;
+    --burbuja-user: #14213D;
+    --burbuja-bot: #ECE7DA;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: "Georgia", "Iowan Old Style", serif;
+    background: var(--crema);
+    color: var(--azul-ug);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header {
+    width: 100%;
+    background: var(--azul-ug);
+    color: var(--crema);
+    padding: 28px 16px 22px;
+    text-align: center;
+    border-bottom: 3px solid var(--dorado);
+  }
+
+  header .eyebrow {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 3px;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin-bottom: 6px;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 400;
+  }
+
+  header p {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px;
+    color: #C7CCDA;
+    margin: 8px 0 0;
+  }
+
+  main {
+    width: 100%;
+    max-width: 640px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 14px 100px;
+  }
+
+  #chat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .msg {
+    max-width: 82%;
+    padding: 12px 16px;
+    border-radius: 4px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 14.5px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+  }
+
+  .msg.bot {
+    align-self: flex-start;
+    background: var(--burbuja-bot);
+    border-left: 3px solid var(--dorado);
+  }
+
+  .msg.user {
+    align-self: flex-end;
+    background: var(--burbuja-user);
+    color: var(--crema);
+    border-right: 3px solid var(--dorado);
+  }
+
+  .meta {
+    font-size: 11px;
+    color: var(--texto-suave);
+    margin-top: 6px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .msg.user .meta { color: #B9BFD1; }
+
+  form#formulario {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 640px;
+    display: flex;
+    gap: 10px;
+    padding: 14px;
+    background: var(--crema);
+    border-top: 1px solid #DCD6C4;
+  }
+
+  #mensaje {
+    flex: 1;
+    padding: 12px 14px;
+    border: 1px solid #C9C2AC;
+    border-radius: 4px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    background: white;
+    color: var(--azul-ug);
+  }
+
+  #mensaje:focus {
+    outline: 2px solid var(--dorado);
+    outline-offset: 1px;
+  }
+
+  button#enviar {
+    background: var(--azul-ug);
+    color: var(--dorado);
+    border: none;
+    padding: 0 22px;
+    border-radius: 4px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+
+  button#enviar:hover { background: var(--azul-claro); }
+
+  .sugerencias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .chip {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    background: white;
+    border: 1px solid #C9C2AC;
+    color: var(--azul-ug);
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .chip:hover { border-color: var(--dorado); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .msg { animation: aparecer 0.18s ease-out; }
+  }
+  @keyframes aparecer {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Universidad de Guayaquil · Admisión y Nivelación</div>
+  <h1>Asistente Virtual de Admisión</h1>
+  <p>Prototipo académico de PLN clásico — no sustituye al portal oficial</p>
+</header>
+
+<main>
+  <div class="sugerencias">
+    <span class="chip" data-msg="¿Cuáles son los requisitos de admisión?">Requisitos de admisión</span>
+    <span class="chip" data-msg="¿Cuándo empieza la nivelación?">Fechas de nivelación</span>
+    <span class="chip" data-msg="¿Cómo creo mi cuenta de aspirante?">Crear cuenta</span>
+    <span class="chip" data-msg="¿Cómo acepto mi cupo?">Aceptar carrera</span>
+  </div>
+
+  <div id="chat">
+    <div class="msg bot">
+      Hola, soy el asistente virtual de Admisión y Nivelación de la UG. Pregúntame sobre requisitos, fechas, creación de cuenta, cupos o carreras.
+    </div>
+  </div>
+</main>
+
+<form id="formulario">
+  <input id="mensaje" type="text" autocomplete="off" placeholder="Escribe tu consulta..." />
+  <button id="enviar" type="submit">Enviar</button>
+</form>
+
+<script>
+const chat = document.getElementById('chat');
+const form = document.getElementById('formulario');
+const input = document.getElementById('mensaje');
+
+function agregarMensaje(texto, esUsuario, meta) {
+  const div = document.createElement('div');
+  div.className = 'msg ' + (esUsuario ? 'user' : 'bot');
+  div.textContent = texto;
+  if (meta) {
+    const m = document.createElement('div');
+    m.className = 'meta';
+    m.textContent = meta;
+    div.appendChild(m);
+  }
+  chat.appendChild(div);
+  window.scrollTo(0, document.body.scrollHeight);
+}
+
+async function enviarMensaje(texto) {
+  agregarMensaje(texto, true);
+  input.value = '';
+
+  try {
+    const resp = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ mensaje: texto })
+    });
+    const data = await resp.json();
+    const meta = `intención: ${data.intent} · confianza: ${data.confianza}`;
+    agregarMensaje(data.respuesta, false, meta);
+  } catch (err) {
+    agregarMensaje('No pude conectarme al servidor. Intenta nuevamente.', false);
+  }
+}
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const texto = input.value.trim();
+  if (texto) enviarMensaje(texto);
+});
+
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => enviarMensaje(chip.dataset.msg));
+});
+</script>
+
+</body>
+</html>

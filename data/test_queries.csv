@@ -1,0 +1,26 @@
+consulta,intent_esperado
+"hola buenas",saludo
+"q tal",saludo
+"cuales son los requisitos de admision",preguntar_requisitos_admision
+"q necesito pa inscribirme en la u",preguntar_requisitos_admision
+"requicitos de amision",preguntar_requisitos_admision
+"como creo mi cuenta de aspirante",explicar_creacion_cuenta
+"no me deja crear la cuenta en el portal",explicar_creacion_cuenta
+"komo me rejistro en admision",explicar_creacion_cuenta
+"cuando empieza la nivelacion",consultar_fechas_nivelacion
+"fechas del curso de nivelacion 2026",consultar_fechas_nivelacion
+"kuando inicia nivelasion",consultar_fechas_nivelacion
+"cuando es el registro de aspirantes",consultar_fechas_registro
+"fechas de matricula segun mi cedula",consultar_fechas_registro
+"cuantos cupos hay para ciencia de datos",consultar_cupos
+"que significa cupo aceptado",consultar_cupos
+"como acepto mi carrera asignada",aceptacion_carrera
+"donde confirmo mi cupo",aceptacion_carrera
+"cual es la nota minima para aprobar nivelacion",consultar_aprobacion_asignaturas
+"que pasa si pierdo una materia en nivelacion",consultar_aprobacion_asignaturas
+"cuantas faltas puedo tener en nivelacion",consultar_asistencia
+"que documentos debo subir al portal",consultar_documentos
+"hay ciencia de datos en la ug",consultar_carreras
+"hay algun facebook de admision",consultar_canales_contacto
+"gracias por la ayuda",agradecimiento
+"xyxyxy asdasd 123123",fallback
