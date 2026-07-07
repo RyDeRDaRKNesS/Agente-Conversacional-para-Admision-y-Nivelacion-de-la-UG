@@ -80,18 +80,21 @@ python evaluate.py
 
 Sobre las 47 consultas de `data/test_queries.csv` (incluyendo variantes con
 errores tipográficos, ambigüedad y consultas fuera de dominio), con el
-umbral de producción `UMBRAL_CONFIANZA = 0.42`:
+umbral de producción `UMBRAL_CONFIANZA = 0.25`:
 
 ```
-Accuracy : 1.000
-F1-macro : 1.000
+Accuracy : 0.979
+F1-macro : 0.975
 ```
 
-El barrido de umbrales (`evaluate.py`) mostró que valores entre 0.20 y 0.40
-dejan pasar un falso positivo fuera de dominio ("me puedes recomendar una
-laptop" → confianza 0.404 hacia `consultar_fechas_registro`); 0.42 es el
-valor más bajo que ya lo elimina. Ver `resultados_evaluacion.txt` para el
-detalle completo y el reporte por clase.
+El barrido de umbrales (`evaluate.py`) confirma que todo el rango 0.20–0.40
+da el mismo resultado; solo a partir de 0.45 desaparece un falso positivo
+puntual fuera de dominio ("me puedes recomendar una laptop" → confianza
+0.404 hacia `consultar_fechas_registro`). Se optó por 0.25 en vez de un
+umbral más alto para minimizar el fallback en consultas válidas de
+confianza moderada, aceptando ese único caso límite como parte de la
+discusión de limitaciones (ver más abajo). Ver `resultados_evaluacion.txt`
+para el detalle completo y el reporte por clase.
 
 ## Despliegue en producción
 

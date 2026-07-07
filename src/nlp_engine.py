@@ -70,16 +70,18 @@ INTENTS_PATH = os.path.join(BASE_DIR, "data", "intents.json")
 #     0.20-0.40   0.979     0.975   (1 falso positivo fuera de dominio)
 #     0.45-0.50   1.000     1.000   (el falso positivo cae a fallback)
 #
-# El único error persistente en el rango 0.20-0.40 es una consulta fuera de
-# dominio ("me puedes recomendar una laptop") que alcanza confianza 0.404
-# por compartir el verbo "recomendar/registrar" a nivel de n-gramas de
-# caracteres con utterances de `consultar_fechas_registro`. Se fijó el
-# umbral en 0.42 -por encima de ese punto de quiebre, pero por debajo de
-# 0.45- como margen de seguridad: es el valor más bajo que ya elimina ese
-# falso positivo específico sin acercarse a la zona donde empezarían a
-# perderse coincidencias válidas de confianza moderada (ver notas de
-# limitaciones en el README sobre el tamaño del set de prueba).
-UMBRAL_CONFIANZA = 0.42
+# Se bajó el umbral a 0.25 (en vez de 0.42) para reducir el fallback en
+# consultas válidas pero de confianza moderada -especialmente frases
+# cortas o con errores tipográficos más severos, donde el canal de
+# n-gramas de caracteres aporta un score menor-, priorizando así que el
+# agente intente responder en la mayoría de casos reales de un
+# estudiante escribiendo desde el celular. El costo aceptado es el mismo
+# falso positivo puntual documentado en el barrido ("me puedes recomendar
+# una laptop" → confianza 0.404 hacia consultar_fechas_registro), que se
+# deja registrado como limitación conocida en el README en vez de subir
+# el umbral para "esconderlo": es un ejemplo real y útil para la
+# discusión de limitaciones que pide RF-08.
+UMBRAL_CONFIANZA = 0.25
 
 # Peso relativo de cada representación al concatenar las matrices TF-IDF.
 # El canal de palabras pesa más porque es el que mejor captura significado;

@@ -1,5 +1,5 @@
 
-=== Evaluación detallada (umbral de producción = 0.42) ===
+=== Evaluación detallada (umbral de producción = 0.25) ===
 
 Consulta                                   Esperado                       Detectado                      Conf. 
 ----------------------------------------------------------------------------------------------------------------
@@ -48,12 +48,12 @@ Consulta                                   Esperado                       Detect
 [OK ] gracias por la ayuda                   agradecimiento                 agradecimiento                 1.000
 [OK ] muchas gracias por ayudarme            agradecimiento                 agradecimiento                 1.000
 [OK ] adios nos vemos                        despedida                      despedida                      0.720
-[OK ] me puedes recomendar una laptop        fallback                       fallback                       0.404
+[ERR] me puedes recomendar una laptop        fallback                       consultar_fechas_registro      0.404
 [OK ] xyxyxy asdasd 123123                   fallback                       fallback                       0.043
 
 ==================================================
-Accuracy (umbral 0.42) : 1.000
-F1-macro (umbral 0.42) : 1.000
+Accuracy (umbral 0.25) : 0.979
+F1-macro (umbral 0.25) : 0.975
 ==================================================
 
 Reporte por clase (umbral de producción):
@@ -72,26 +72,26 @@ consultar_aprobacion_asignaturas       1.00      1.00      1.00         2
                  consultar_cupos       1.00      1.00      1.00         4
             consultar_documentos       1.00      1.00      1.00         1
      consultar_fechas_nivelacion       1.00      1.00      1.00         3
-       consultar_fechas_registro       1.00      1.00      1.00         2
+       consultar_fechas_registro       0.67      1.00      0.80         2
             consultar_resultados       1.00      1.00      1.00         2
                        despedida       1.00      1.00      1.00         1
         explicar_creacion_cuenta       1.00      1.00      1.00         4
-                        fallback       1.00      1.00      1.00         2
+                        fallback       1.00      0.50      0.67         2
    preguntar_requisitos_admision       1.00      1.00      1.00         4
                 problemas_portal       1.00      1.00      1.00         2
                 recuperar_cuenta       1.00      1.00      1.00         3
                           saludo       1.00      1.00      1.00         3
 
-                        accuracy                           1.00        47
-                       macro avg       1.00      1.00      1.00        47
-                    weighted avg       1.00      1.00      1.00        47
+                        accuracy                           0.98        47
+                       macro avg       0.98      0.98      0.97        47
+                    weighted avg       0.99      0.98      0.98        47
 
 === Barrido de umbrales de confianza ===
 
 Umbral   Accuracy   F1-macro  
 ------------------------------
 0.20     0.979      0.975     
-0.25     0.979      0.975     
+0.25     0.979      0.975       <- valor usado en producción
 0.28     0.979      0.975     
 0.30     0.979      0.975     
 0.35     0.979      0.975     
