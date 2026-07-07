@@ -1,4 +1,5 @@
 {
+  "_comentario": "Archivo de datos del agente (RF-01). Cada intención incluye 'fuente' y 'url' para trazar la respuesta a un canal oficial (Sección 9 del enunciado), separando explícitamente los datos de la lógica del agente (ver nlp_engine.py).",
   "intents": [
     {
       "tag": "saludo",
@@ -10,11 +11,15 @@
         "hola como estas",
         "hey",
         "que tal",
-        "hola necesito ayuda"
+        "hola necesito ayuda",
+        "aloo",
+        "buen dia"
       ],
       "respuestas": [
         "¡Hola! Soy el asistente virtual de Admisión y Nivelación de la UG. ¿En qué puedo ayudarte hoy?"
-      ]
+      ],
+      "fuente": "Interacción conversacional genérica (no requiere fuente oficial)",
+      "url": null
     },
     {
       "tag": "despedida",
@@ -23,13 +28,16 @@
         "chao",
         "hasta luego",
         "nos vemos",
-        "gracias eso es todo",
-        "listo gracias",
-        "bye"
+        "listo eso es todo",
+        "bye",
+        "hasta pronto",
+        "me voy gracias"
       ],
       "respuestas": [
         "¡Hasta luego! Si tienes otra duda sobre admisión o nivelación, aquí estaré."
-      ]
+      ],
+      "fuente": "Interacción conversacional genérica (no requiere fuente oficial)",
+      "url": null
     },
     {
       "tag": "agradecimiento",
@@ -37,12 +45,19 @@
         "gracias",
         "muchas gracias",
         "te lo agradezco",
-        "gracias por la info",
-        "muy amable gracias"
+        "gracias por la ayuda",
+        "muchas gracias por ayudarme",
+        "te agradezco la ayuda",
+        "gracias por responder",
+        "ok gracias por la informacion",
+        "muy amable gracias",
+        "gracias por la info"
       ],
       "respuestas": [
         "¡Con gusto! Cualquier otra consulta sobre admisión o nivelación, aquí estoy."
-      ]
+      ],
+      "fuente": "Interacción conversacional genérica (no requiere fuente oficial)",
+      "url": null
     },
     {
       "tag": "preguntar_requisitos_admision",
@@ -54,11 +69,16 @@
         "como me inscribo en la ug",
         "que necesito para aplicar a una carrera",
         "requisitos de inscripcion universidad de guayaquil",
-        "que pide la ug para admision"
+        "que pide la ug para admision",
+        "requicitos de amision",
+        "q necesito pa inscribirme en la u",
+        "requisitos para entrar a la universidad de guayaquil"
       ],
       "respuestas": [
-        "Para el proceso de admisión debes crear tu cuenta en el portal oficial de admisión (admision.ug.edu.ec/admision/), tener tu cédula de identidad, título de bachiller y cumplir con el cronograma de registro. Los requisitos generales detallados se publican en ese portal."
-      ]
+        "Para el proceso de admisión debes crear tu cuenta en el portal oficial de admisión, tener tu cédula de identidad, título de bachiller y cumplir con el cronograma de registro. Los requisitos generales detallados se publican en ese portal."
+      ],
+      "fuente": "Portal Oficial de Admisión UG",
+      "url": "https://admision.ug.edu.ec/admision/"
     },
     {
       "tag": "explicar_creacion_cuenta",
@@ -68,11 +88,51 @@
         "como me registro en el sistema de admision",
         "quiero crear un usuario en admision ug",
         "pasos para crear cuenta de aspirante",
-        "registro de nuevo usuario admision"
+        "registro de nuevo usuario admision",
+        "komo me rejistro en admision",
+        "el sistema no me deja crear cuenta",
+        "problemas para crear usuario",
+        "no puedo registrarme en el portal"
       ],
       "respuestas": [
-        "La creación de cuenta se realiza exclusivamente en el portal oficial admision.ug.edu.ec/admision/, ingresando tu número de cédula y correo electrónico. El sistema te guiará para establecer una contraseña y completar tus datos personales."
-      ]
+        "La creación de cuenta se realiza exclusivamente en el portal oficial de admisión, ingresando tu número de cédula y correo electrónico. El sistema te guiará para establecer una contraseña y completar tus datos personales."
+      ],
+      "fuente": "Portal Oficial de Admisión UG",
+      "url": "https://admision.ug.edu.ec/admision/"
+    },
+    {
+      "tag": "recuperar_cuenta",
+      "utterances": [
+        "olvide mi contraseña",
+        "como recupero mi clave",
+        "no puedo entrar a mi cuenta",
+        "perdi el acceso al portal",
+        "mi usuario no funciona",
+        "se me olvido la contraseña del portal",
+        "como cambio mi contraseña de admision",
+        "no recuerdo mi contraseña del portal"
+      ],
+      "respuestas": [
+        "Si olvidaste tu contraseña o no puedes ingresar al portal de admisión, usa la opción de recuperación de cuenta disponible en la plataforma oficial. Si el problema persiste, comunícate a través de los canales oficiales de Admisión UG."
+      ],
+      "fuente": "Portal Oficial de Admisión UG",
+      "url": "https://admision.ug.edu.ec/admision/"
+    },
+    {
+      "tag": "problemas_portal",
+      "utterances": [
+        "la pagina de admision no abre",
+        "el portal de admision no carga",
+        "me sale un error en el sistema de admision",
+        "la plataforma esta caida",
+        "no puedo acceder a la pagina de la ug",
+        "el sitio web de admision no funciona"
+      ],
+      "respuestas": [
+        "Si el portal de admisión no carga o muestra errores, intenta nuevamente más tarde o desde otro navegador. Si el problema continúa, repórtalo por los canales oficiales de Admisión UG (Facebook o Instagram institucionales)."
+      ],
+      "fuente": "Canales de Comunicación en Redes Sociales - Admisión UG",
+      "url": "https://admision.ug.edu.ec/admision/"
     },
     {
       "tag": "consultar_fechas_nivelacion",
@@ -82,11 +142,15 @@
         "cuando son las clases de nivelacion",
         "calendario de nivelacion 2026",
         "cuando inicia el periodo de nivelacion",
-        "hasta cuando dura la nivelacion"
+        "hasta cuando dura la nivelacion",
+        "kuando inicia nivelasion",
+        "cuando empieza la nivelasion"
       ],
       "respuestas": [
-        "Las fechas del curso de nivelación se publican en admision.ug.edu.ec/nivelacion/. El cronograma exacto varía cada periodo, por lo que te recomendamos revisar el calendario oficial vigente en esa página."
-      ]
+        "Las fechas del curso de nivelación se publican en la página oficial de nivelación. El cronograma exacto varía cada periodo, por lo que te recomendamos revisar el calendario oficial vigente en esa página."
+      ],
+      "fuente": "Página de Nivelación UG",
+      "url": "https://admision.ug.edu.ec/nivelacion/"
     },
     {
       "tag": "consultar_fechas_registro",
@@ -99,8 +163,10 @@
         "fechas de inscripcion 2026"
       ],
       "respuestas": [
-        "El cronograma de registro está segmentado por el último dígito de tu cédula y se publica en el portal oficial admision.ug.edu.ec/admision/. Ahí encontrarás la fecha exacta que te corresponde."
-      ]
+        "El cronograma de registro está segmentado por el último dígito de tu cédula y se publica en el portal oficial de admisión. Ahí encontrarás la fecha exacta que te corresponde."
+      ],
+      "fuente": "Portal Oficial de Admisión UG",
+      "url": "https://admision.ug.edu.ec/admision/"
     },
     {
       "tag": "consultar_cupos",
@@ -110,11 +176,19 @@
         "como se asignan los cupos",
         "que pasa si no hay cupo en mi carrera",
         "cupo aceptado que significa",
-        "como saber si tengo cupo"
+        "como saber si tengo cupo",
+        "cuantos cupos hay para ciencia de datos",
+        "cupos disponibles para mi carrera",
+        "cupos por carrera",
+        "hay cupos para medicina",
+        "disponibilidad de cupos en la ug",
+        "quiero saber los cupos de una carrera"
       ],
       "respuestas": [
         "La asignación de cupos depende del cumplimiento de requisitos y disponibilidad por carrera. El estado de tu cupo (por ejemplo 'cupo aceptado') se notifica dentro de tu cuenta en el portal oficial de admisión."
-      ]
+      ],
+      "fuente": "Portal Oficial de Admisión UG",
+      "url": "https://admision.ug.edu.ec/admision/"
     },
     {
       "tag": "aceptacion_carrera",
@@ -127,7 +201,54 @@
       ],
       "respuestas": [
         "La aceptación de carrera se confirma directamente en tu cuenta del portal de admisión, dentro del plazo establecido en el cronograma oficial. Si no aceptas dentro del plazo, puedes perder el cupo asignado."
-      ]
+      ],
+      "fuente": "Portal Oficial de Admisión UG",
+      "url": "https://admision.ug.edu.ec/admision/"
+    },
+    {
+      "tag": "cambio_carrera",
+      "utterances": [
+        "quiero cambiarme de carrera",
+        "puedo cambiar de carrera despues de aceptar",
+        "como rechazo el cupo que me dieron",
+        "no quiero la carrera que me asignaron",
+        "se puede cambiar de carrera en admision"
+      ],
+      "respuestas": [
+        "El cambio o rechazo de la carrera asignada debe gestionarse dentro de tu cuenta en el portal oficial de admisión, siguiendo el procedimiento y los plazos definidos en el reglamento vigente."
+      ],
+      "fuente": "Reglamento de Admisión de la Universidad de Guayaquil",
+      "url": "https://admision.ug.edu.ec/admision/"
+    },
+    {
+      "tag": "consultar_resultados",
+      "utterances": [
+        "cuando salen los resultados de cupos",
+        "donde veo los resultados de admision",
+        "ya publicaron los resultados",
+        "como sé si fui aceptado",
+        "cuando publican la asignacion de carreras"
+      ],
+      "respuestas": [
+        "Los resultados de asignación se publican dentro de tu cuenta en el portal oficial de admisión, según el cronograma vigente. También se anuncian en los canales oficiales de redes sociales de Admisión UG."
+      ],
+      "fuente": "Portal Oficial de Admisión UG",
+      "url": "https://admision.ug.edu.ec/admision/"
+    },
+    {
+      "tag": "consultar_costos",
+      "utterances": [
+        "cuanto cuesta la matricula",
+        "cuanto se paga por matricula",
+        "la ug es gratuita",
+        "hay algun costo para inscribirse",
+        "cuanto vale estudiar en la ug"
+      ],
+      "respuestas": [
+        "La educación en la Universidad de Guayaquil es de carácter público y gratuito según la normativa vigente; los valores específicos de trámites administrativos, si aplican, se detallan en el portal oficial de admisión."
+      ],
+      "fuente": "Reglamento de Admisión de la Universidad de Guayaquil",
+      "url": "https://admision.ug.edu.ec/admision/"
     },
     {
       "tag": "consultar_aprobacion_asignaturas",
@@ -139,8 +260,10 @@
         "como funciona la aprobacion de asignaturas"
       ],
       "respuestas": [
-        "Los criterios de aprobación de los cursos de nivelación, incluyendo notas mínimas y seguimiento académico, están detallados en admision.ug.edu.ec/nivelacion/."
-      ]
+        "Los criterios de aprobación de los cursos de nivelación, incluyendo notas mínimas y seguimiento académico, están detallados en la página oficial de nivelación."
+      ],
+      "fuente": "Página de Nivelación UG",
+      "url": "https://admision.ug.edu.ec/nivelacion/"
     },
     {
       "tag": "consultar_asistencia",
@@ -148,11 +271,15 @@
         "cuantas faltas puedo tener en nivelacion",
         "como se controla la asistencia en nivelacion",
         "que pasa si falto a clases de nivelacion",
-        "hay control de asistencia en el curso de nivelacion"
+        "hay control de asistencia en el curso de nivelacion",
+        "cuanto porcentaje de faltas se permite en nivelacion",
+        "puedo faltar a nivelacion sin perder el curso"
       ],
       "respuestas": [
-        "El control de asistencias del curso de nivelación se gestiona a través de la página oficial admision.ug.edu.ec/nivelacion/, donde se detallan los porcentajes permitidos de inasistencia."
-      ]
+        "El control de asistencias del curso de nivelación se gestiona a través de la página oficial de nivelación, donde se detallan los porcentajes permitidos de inasistencia."
+      ],
+      "fuente": "Página de Nivelación UG",
+      "url": "https://admision.ug.edu.ec/nivelacion/"
     },
     {
       "tag": "consultar_documentos",
@@ -164,7 +291,9 @@
       ],
       "respuestas": [
         "Generalmente se solicita cédula de identidad, título de bachiller o certificado de estar cursando el último año, y una fotografía. El listado exacto y actualizado está en el portal oficial de admisión."
-      ]
+      ],
+      "fuente": "Portal Oficial de Admisión UG",
+      "url": "https://admision.ug.edu.ec/admision/"
     },
     {
       "tag": "consultar_carreras",
@@ -177,7 +306,9 @@
       ],
       "respuestas": [
         "La Universidad de Guayaquil ofrece carreras en múltiples facultades, incluyendo Ciencia de Datos e Inteligencia Artificial en la Facultad de Ciencias Matemáticas y Físicas. El listado completo y actualizado está en el portal oficial de admisión."
-      ]
+      ],
+      "fuente": "Portal Oficial de Admisión UG",
+      "url": "https://admision.ug.edu.ec/admision/"
     },
     {
       "tag": "consultar_canales_contacto",
@@ -190,14 +321,33 @@
       ],
       "respuestas": [
         "Puedes seguir los canales oficiales: Facebook 'Admisión UG' para comunicados sobre registro y matriculación, e Instagram 'Coordinación de Admisión y Nivelación' para material explicativo sobre el proceso."
-      ]
+      ],
+      "fuente": "Canales de Comunicación en Redes Sociales - Admisión UG",
+      "url": null
+    },
+    {
+      "tag": "consulta_general_admision",
+      "utterances": [
+        "necesito ayuda con admision",
+        "tengo dudas sobre el proceso de admision",
+        "puedes ayudarme con la admision",
+        "no entiendo el proceso de admision",
+        "ayuda con el proceso de ingreso a la universidad"
+      ],
+      "respuestas": [
+        "Con gusto te ayudo. Puedo darte información sobre requisitos, creación de cuenta, fechas de registro y nivelación, cupos, aceptación de carrera y costos. Cuéntame específicamente qué necesitas saber."
+      ],
+      "fuente": "Portal Oficial de Admisión UG",
+      "url": "https://admision.ug.edu.ec/admision/"
     },
     {
       "tag": "fallback",
       "utterances": [],
       "respuestas": [
         "Lo siento, no entendí tu consulta. ¿Puedes reformularla? Puedo ayudarte con temas de admisión, creación de cuenta, fechas de nivelación, cupos, aceptación de carrera y más."
-      ]
+      ],
+      "fuente": "No aplica",
+      "url": null
     }
   ]
 }

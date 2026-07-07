@@ -1,33 +1,50 @@
 # Asistente Virtual de Admisión y Nivelación — UG
 
-Chatbot de intenciones basado en **PLN clásico** (TF-IDF + similitud coseno) para
-responder preguntas frecuentes sobre admisión y nivelación de la Universidad de
-Guayaquil. Proyecto académico — Trabajo Parcial II, materia de Procesamiento de
+Chatbot de intenciones basado en **PLN clásico** para responder preguntas
+frecuentes sobre admisión y nivelación de la Universidad de Guayaquil.
+Proyecto académico — Trabajo Parcial II, materia de Procesamiento de
 Lenguaje Natural.
 
-> ⚠️ Nota: el enunciado del trabajo indica que **no se requiere despliegue en
-> producción**. Los archivos de despliegue (Render/PythonAnywhere) incluidos
-> aquí son un extra, no un requisito de la rúbrica.
+> ⚠️ El enunciado indica que **no se requiere despliegue en producción**.
+> Los archivos de despliegue (Render/PythonAnywhere) incluidos aquí son un
+> extra, no un requisito de la rúbrica.
+
+## Arquitectura del motor de NLP
+
+La detección de intención combina **dos representaciones TF-IDF en
+paralelo** (ver `src/nlp_engine.py`), concatenadas antes de calcular
+similitud coseno:
+
+| Canal | Qué captura | Peso |
+|---|---|---|
+| TF-IDF por palabras (uni+bigramas), sobre texto con stopwords eliminadas y stemming | Significado léxico | 0.7 |
+| TF-IDF por n-gramas de caracteres (3-5), sobre texto solo limpiado | Tolerancia a errores tipográficos ("nivelasion", "amision", "rejistro") | 0.3 |
+
+Esto sigue siendo PLN clásico (ningún embedding ni modelo preentrenado):
+es simplemente una segunda función de vectorización léxica, actuando como
+red de seguridad ortográfica sobre la primera.
 
 ## Estructura del repositorio
 
 ```
 ug-chatbot/
 ├── data/
-│   ├── intents.json        # RF-01: intenciones, utterances y respuestas
-│   └── test_queries.csv     # RF-08: set de prueba (25 consultas etiquetadas)
+│   ├── intents.json          # RF-01: 21 intenciones, utterances, respuestas y fuente/url
+│   └── test_queries.csv      # RF-08: 47 consultas de prueba etiquetadas
 ├── src/
-│   ├── preprocessing.py     # RF-02: limpieza, stopwords, stemming
-│   ├── entities.py          # RF-05: extracción de entidades (regex)
-│   ├── nlp_engine.py        # RF-03/04/06: TF-IDF, similitud coseno, fallback
-│   ├── chatbot.py           # RF-07: interfaz de consola
-│   ├── app.py               # RF-07: interfaz web (Flask)
-│   └── evaluate.py          # RF-08: evaluación (accuracy, F1-macro)
+│   ├── preprocessing.py      # RF-02: limpieza, stopwords, stemming
+│   ├── entities.py           # RF-05: fechas, cédula (con validación módulo 10), carreras, términos
+│   ├── nlp_engine.py         # RF-03/04/06: TF-IDF híbrido, similitud coseno, fallback
+│   ├── chatbot.py            # RF-07: interfaz de consola
+│   ├── app.py                # RF-07: interfaz web (Flask)
+│   └── evaluate.py           # RF-08: evaluación + barrido de umbrales
 ├── templates/
-│   └── index.html           # Frontend del chat web
-├── wsgi.py                  # Punto de entrada para producción (Render)
-├── Procfile                 # Comando de arranque para Render
-├── render.yaml               # Configuración declarativa opcional de Render
+│   └── index.html            # Frontend del chat web
+├── resultados_evaluacion.txt # Generado por evaluate.py (evidencia para el informe)
+├── wsgi.py                   # Punto de entrada para producción (Render)
+├── Procfile                  # Comando de arranque para Render
+├── render.yaml                # Configuración declarativa opcional de Render
+├── .python-version            # Fija la versión de Python en Render
 └── requirements.txt
 ```
 
@@ -56,7 +73,25 @@ python app.py
 ```bash
 cd src
 python evaluate.py
+# genera ../resultados_evaluacion.txt con el reporte completo
 ```
+
+## Resultados de evaluación
+
+Sobre las 47 consultas de `data/test_queries.csv` (incluyendo variantes con
+errores tipográficos, ambigüedad y consultas fuera de dominio), con el
+umbral de producción `UMBRAL_CONFIANZA = 0.42`:
+
+```
+Accuracy : 1.000
+F1-macro : 1.000
+```
+
+El barrido de umbrales (`evaluate.py`) mostró que valores entre 0.20 y 0.40
+dejan pasar un falso positivo fuera de dominio ("me puedes recomendar una
+laptop" → confianza 0.404 hacia `consultar_fechas_registro`); 0.42 es el
+valor más bajo que ya lo elimina. Ver `resultados_evaluacion.txt` para el
+detalle completo y el reporte por clase.
 
 ## Despliegue en producción
 
@@ -67,7 +102,7 @@ python evaluate.py
 3. Render detecta `render.yaml` automáticamente, o configura manualmente:
    - **Build Command:** `pip install -r requirements.txt`
    - **Start Command:** `gunicorn wsgi:app --bind 0.0.0.0:$PORT`
-   - **Runtime:** Python 3
+   - **Runtime:** Python 3 (fijado en `.python-version` como 3.11.9)
 4. Despliega. La URL pública (`https://tu-app.onrender.com`) sirve la interfaz web.
 
 ### Opción B: PythonAnywhere
@@ -97,39 +132,43 @@ python evaluate.py
 5. Click en **Reload**. La app queda disponible en `https://tu_usuario.pythonanywhere.com`.
 
 > En ambos casos, el motor NLP (`MotorNLP`) se instancia **una sola vez** al
-> arrancar el proceso (ver `src/app.py`), no en cada request, para que el
-> cálculo de TF-IDF no se repita en cada consulta.
+> arrancar el proceso (ver `src/app.py`), para que el ajuste de ambos
+> vectorizadores TF-IDF no se repita en cada consulta.
 
 ## Justificación (Sección 7 del enunciado) — guía rápida
 
-- **a) TF-IDF vs. bolsa de palabras:** ver `nlp_engine.py` — el factor IDF
-  reduce el peso de palabras muy frecuentes en todo el corpus (p. ej. "admision",
+- **a) TF-IDF vs. bolsa de palabras:** el factor IDF reduce el peso de
+  palabras muy frecuentes en todo el corpus (p. ej. "admision",
   "nivelacion") y resalta términos que distinguen una intención de otra.
-- **b) Similitud coseno vs. distancia euclidiana:** el coseno normaliza por la
-  longitud del vector, así una consulta corta ("cuando nivelacion") y una
-  utterance larga con las mismas palabras clave siguen siendo "cercanas".
-- **c) Preprocesamiento antes de vectorizar:** ver `preprocessing.py` — por
-  ejemplo, "requisitos" / "requisito" / "REQUISITOS" se normalizan al mismo
-  stem, evitando que TF-IDF los trate como tokens distintos.
-- **d) Umbral de confianza:** documentado como constante `UMBRAL_CONFIANZA` en
-  `nlp_engine.py`, elegido probando el set de evaluación (`evaluate.py`). Sin
-  umbral, cualquier consulta fuera de dominio recibiría la respuesta de la
-  intención "más parecida" aunque la similitud fuera casi nula.
+- **b) Similitud coseno vs. distancia euclidiana:** el coseno normaliza por
+  la longitud del vector, así una consulta corta y una utterance larga con
+  las mismas palabras clave siguen siendo "cercanas".
+- **c) Preprocesamiento antes de vectorizar:** ver `preprocessing.py` —
+  "requisitos"/"requisito"/"REQUISITOS" se normalizan al mismo stem.
+- **d) Umbral de confianza:** documentado y justificado con datos reales del
+  barrido de `evaluate.py` (ver `nlp_engine.UMBRAL_CONFIANZA` y la sección
+  "Resultados de evaluación" arriba).
 - **e) Separar datos (JSON) de lógica (código):** permite ampliar o corregir
-  intenciones sin tocar `nlp_engine.py`, y facilita que otra persona del grupo
-  edite el contenido sin escribir Python.
-- **f) Manejo de errores:** `detectar_intencion()` en `nlp_engine.py` envuelve
-  todo el flujo en `try/except` y cae a `fallback` ante texto vacío, no
-  reconocido o cualquier excepción inesperada, sin detener el proceso.
+  intenciones —incluyendo su fuente oficial— sin tocar `nlp_engine.py`.
+- **f) Manejo de errores:** `detectar_intencion()` en `nlp_engine.py`
+  envuelve todo el flujo en `try/except` y cae a `fallback` ante texto
+  vacío, no reconocido o cualquier excepción inesperada.
 
-## Limitaciones observadas (ver salida de `evaluate.py`)
+## Limitaciones observadas
 
-- Consultas muy cortas con una sola palabra de alto IDF pueden generar falsos
-  positivos (p. ej. "significa" comparte stem con una utterance de otra
-  intención, elevando su similitud aunque el resto de la frase no coincida).
+- El canal de n-gramas de caracteres, que da tolerancia a errores
+  tipográficos, también puede generar falsos positivos cuando una consulta
+  fuera de dominio comparte subcadenas cortas con utterances de
+  entrenamiento (ej. una entrada sin sentido que contiene el fragmento
+  "signif" empareja parcialmente con "cupo aceptado ¿qué **signif**ica?").
+- El set de prueba (47 consultas) es reducido frente al universo real de
+  formas en que un estudiante puede escribir una pregunta; un umbral que
+  luce óptimo aquí podría no generalizar igual ante un volumen mayor de
+  tráfico real.
+- La validación de cédula (`entities.validar_cedula_ecuador`) verifica
+  estructura y dígito verificador, pero no consulta un padrón real: no
+  puede confirmar que la cédula pertenezca efectivamente a un aspirante
+  registrado.
 - Intenciones semánticamente cercanas (p. ej. `agradecimiento` vs.
-  `despedida`) a veces se confunden porque comparten vocabulario superficial;
-  un enfoque puramente léxico como TF-IDF no captura la diferencia de
-  intención pragmática entre "gracias" y "listo, gracias, adiós".
-- El umbral fijo (0.20) es un compromiso: subirlo reduce falsos positivos pero
-  aumenta las consultas válidas que caen a fallback.
+  `despedida`) pueden confundirse en frases mixtas, porque TF-IDF no
+  captura intención pragmática, solo coincidencia léxica/ortográfica.

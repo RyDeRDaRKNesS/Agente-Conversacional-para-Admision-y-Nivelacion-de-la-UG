@@ -1,3 +1,15 @@
+<!--
+  index.html
+  ==========
+  Interfaz web del agente conversacional (RF-07).
+
+  Es una página estática con CSS y JS embebidos (sin frameworks de
+  frontend) que consume el endpoint POST /api/chat definido en
+  src/app.py. Toda la lógica de PLN vive en el backend; este archivo solo
+  se encarga de renderizar la conversación y reenviar el texto del
+  usuario, manteniendo la separación de responsabilidades entre la
+  interfaz y el motor de NLP.
+-->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -206,10 +218,19 @@
 </form>
 
 <script>
+// Referencias a los elementos del DOM que se actualizan dinámicamente.
 const chat = document.getElementById('chat');
 const form = document.getElementById('formulario');
 const input = document.getElementById('mensaje');
 
+/**
+ * Inserta una burbuja de mensaje en el historial de chat.
+ * @param {string} texto - contenido del mensaje.
+ * @param {boolean} esUsuario - true para alinear a la derecha (usuario),
+ *   false para alinear a la izquierda (bot).
+ * @param {string} [meta] - texto secundario opcional (ej. intención y
+ *   confianza detectadas), útil para depuración durante la exposición.
+ */
 function agregarMensaje(texto, esUsuario, meta) {
   const div = document.createElement('div');
   div.className = 'msg ' + (esUsuario ? 'user' : 'bot');
@@ -224,6 +245,13 @@ function agregarMensaje(texto, esUsuario, meta) {
   window.scrollTo(0, document.body.scrollHeight);
 }
 
+/**
+ * Envía el mensaje del usuario al backend (POST /api/chat) y renderiza
+ * la respuesta del motor de NLP. Cualquier fallo de red se captura para
+ * mostrar un mensaje amigable en vez de dejar la conversación colgada.
+ * @param {string} texto - consulta escrita por el usuario o elegida
+ *   desde uno de los chips de sugerencias.
+ */
 async function enviarMensaje(texto) {
   agregarMensaje(texto, true);
   input.value = '';
@@ -242,12 +270,15 @@ async function enviarMensaje(texto) {
   }
 }
 
+// Envío del formulario principal (Enter o botón "Enviar").
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const texto = input.value.trim();
   if (texto) enviarMensaje(texto);
 });
 
+// Chips de sugerencias: atajos de un clic hacia intenciones comunes,
+// útiles para la demostración en vivo durante la exposición grupal.
 document.querySelectorAll('.chip').forEach(chip => {
   chip.addEventListener('click', () => enviarMensaje(chip.dataset.msg));
 });

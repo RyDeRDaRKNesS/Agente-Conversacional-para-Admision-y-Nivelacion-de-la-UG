@@ -1,12 +1,20 @@
 consulta,intent_esperado
 "hola buenas",saludo
 "q tal",saludo
+"aloo",saludo
 "cuales son los requisitos de admision",preguntar_requisitos_admision
 "q necesito pa inscribirme en la u",preguntar_requisitos_admision
 "requicitos de amision",preguntar_requisitos_admision
+"requisitos para entrar a la universidad de guayaquil",preguntar_requisitos_admision
 "como creo mi cuenta de aspirante",explicar_creacion_cuenta
 "no me deja crear la cuenta en el portal",explicar_creacion_cuenta
 "komo me rejistro en admision",explicar_creacion_cuenta
+"problemas para crear usuario",explicar_creacion_cuenta
+"olvide mi contraseña",recuperar_cuenta
+"no recuerdo mi contraseña del portal",recuperar_cuenta
+"perdi el acceso al portal",recuperar_cuenta
+"la pagina de admision no abre",problemas_portal
+"el portal de admision no carga",problemas_portal
 "cuando empieza la nivelacion",consultar_fechas_nivelacion
 "fechas del curso de nivelacion 2026",consultar_fechas_nivelacion
 "kuando inicia nivelasion",consultar_fechas_nivelacion
@@ -14,13 +22,27 @@ consulta,intent_esperado
 "fechas de matricula segun mi cedula",consultar_fechas_registro
 "cuantos cupos hay para ciencia de datos",consultar_cupos
 "que significa cupo aceptado",consultar_cupos
+"cupos disponibles para mi carrera",consultar_cupos
+"hay cupos para medicina",consultar_cupos
 "como acepto mi carrera asignada",aceptacion_carrera
 "donde confirmo mi cupo",aceptacion_carrera
+"quiero cambiarme de carrera",cambio_carrera
+"no quiero la carrera que me asignaron",cambio_carrera
+"cuando salen los resultados de cupos",consultar_resultados
+"ya publicaron los resultados",consultar_resultados
+"cuanto se paga por matricula",consultar_costos
+"la ug es gratuita",consultar_costos
 "cual es la nota minima para aprobar nivelacion",consultar_aprobacion_asignaturas
 "que pasa si pierdo una materia en nivelacion",consultar_aprobacion_asignaturas
 "cuantas faltas puedo tener en nivelacion",consultar_asistencia
 "que documentos debo subir al portal",consultar_documentos
 "hay ciencia de datos en la ug",consultar_carreras
+"que carreras ofrece la universidad",consultar_carreras
 "hay algun facebook de admision",consultar_canales_contacto
+"necesito ayuda con admision",consulta_general_admision
+"tengo dudas sobre el proceso de admision",consulta_general_admision
 "gracias por la ayuda",agradecimiento
+"muchas gracias por ayudarme",agradecimiento
+"adios nos vemos",despedida
+"me puedes recomendar una laptop",fallback
 "xyxyxy asdasd 123123",fallback

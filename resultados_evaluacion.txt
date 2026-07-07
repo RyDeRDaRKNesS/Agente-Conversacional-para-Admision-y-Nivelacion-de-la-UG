@@ -1,0 +1,100 @@
+
+=== Evaluación detallada (umbral de producción = 0.42) ===
+
+Consulta                                   Esperado                       Detectado                      Conf. 
+----------------------------------------------------------------------------------------------------------------
+[OK ] hola buenas                            saludo                         saludo                         0.706
+[OK ] q tal                                  saludo                         saludo                         0.960
+[OK ] aloo                                   saludo                         saludo                         1.000
+[OK ] cuales son los requisitos de admision  preguntar_requisitos_admision  preguntar_requisitos_admision  1.000
+[OK ] q necesito pa inscribirme en la u      preguntar_requisitos_admision  preguntar_requisitos_admision  1.000
+[OK ] requicitos de amision                  preguntar_requisitos_admision  preguntar_requisitos_admision  1.000
+[OK ] requisitos para entrar a la universida preguntar_requisitos_admision  preguntar_requisitos_admision  1.000
+[OK ] como creo mi cuenta de aspirante       explicar_creacion_cuenta       explicar_creacion_cuenta       1.000
+[OK ] no me deja crear la cuenta en el porta explicar_creacion_cuenta       explicar_creacion_cuenta       0.710
+[OK ] komo me rejistro en admision           explicar_creacion_cuenta       explicar_creacion_cuenta       1.000
+[OK ] problemas para crear usuario           explicar_creacion_cuenta       explicar_creacion_cuenta       1.000
+[OK ] olvide mi contraseña                   recuperar_cuenta               recuperar_cuenta               1.000
+[OK ] no recuerdo mi contraseña del portal   recuperar_cuenta               recuperar_cuenta               1.000
+[OK ] perdi el acceso al portal              recuperar_cuenta               recuperar_cuenta               1.000
+[OK ] la pagina de admision no abre          problemas_portal               problemas_portal               1.000
+[OK ] el portal de admision no carga         problemas_portal               problemas_portal               1.000
+[OK ] cuando empieza la nivelacion           consultar_fechas_nivelacion    consultar_fechas_nivelacion    1.000
+[OK ] fechas del curso de nivelacion 2026    consultar_fechas_nivelacion    consultar_fechas_nivelacion    0.822
+[OK ] kuando inicia nivelasion               consultar_fechas_nivelacion    consultar_fechas_nivelacion    1.000
+[OK ] cuando es el registro de aspirantes    consultar_fechas_registro      consultar_fechas_registro      1.000
+[OK ] fechas de matricula segun mi cedula    consultar_fechas_registro      consultar_fechas_registro      0.691
+[OK ] cuantos cupos hay para ciencia de dato consultar_cupos                consultar_cupos                1.000
+[OK ] que significa cupo aceptado            consultar_cupos                consultar_cupos                0.887
+[OK ] cupos disponibles para mi carrera      consultar_cupos                consultar_cupos                1.000
+[OK ] hay cupos para medicina                consultar_cupos                consultar_cupos                1.000
+[OK ] como acepto mi carrera asignada        aceptacion_carrera             aceptacion_carrera             0.786
+[OK ] donde confirmo mi cupo                 aceptacion_carrera             aceptacion_carrera             0.970
+[OK ] quiero cambiarme de carrera            cambio_carrera                 cambio_carrera                 1.000
+[OK ] no quiero la carrera que me asignaron  cambio_carrera                 cambio_carrera                 1.000
+[OK ] cuando salen los resultados de cupos   consultar_resultados           consultar_resultados           1.000
+[OK ] ya publicaron los resultados           consultar_resultados           consultar_resultados           1.000
+[OK ] cuanto se paga por matricula           consultar_costos               consultar_costos               1.000
+[OK ] la ug es gratuita                      consultar_costos               consultar_costos               1.000
+[OK ] cual es la nota minima para aprobar ni consultar_aprobacion_asignaturas consultar_aprobacion_asignaturas 1.000
+[OK ] que pasa si pierdo una materia en nive consultar_aprobacion_asignaturas consultar_aprobacion_asignaturas 1.000
+[OK ] cuantas faltas puedo tener en nivelaci consultar_asistencia           consultar_asistencia           1.000
+[OK ] que documentos debo subir al portal    consultar_documentos           consultar_documentos           1.000
+[OK ] hay ciencia de datos en la ug          consultar_carreras             consultar_carreras             1.000
+[OK ] que carreras ofrece la universidad     consultar_carreras             consultar_carreras             0.708
+[OK ] hay algun facebook de admision         consultar_canales_contacto     consultar_canales_contacto     1.000
+[OK ] necesito ayuda con admision            consulta_general_admision      consulta_general_admision      1.000
+[OK ] tengo dudas sobre el proceso de admisi consulta_general_admision      consulta_general_admision      1.000
+[OK ] gracias por la ayuda                   agradecimiento                 agradecimiento                 1.000
+[OK ] muchas gracias por ayudarme            agradecimiento                 agradecimiento                 1.000
+[OK ] adios nos vemos                        despedida                      despedida                      0.720
+[OK ] me puedes recomendar una laptop        fallback                       fallback                       0.404
+[OK ] xyxyxy asdasd 123123                   fallback                       fallback                       0.043
+
+==================================================
+Accuracy (umbral 0.42) : 1.000
+F1-macro (umbral 0.42) : 1.000
+==================================================
+
+Reporte por clase (umbral de producción):
+
+                                  precision    recall  f1-score   support
+
+              aceptacion_carrera       1.00      1.00      1.00         2
+                  agradecimiento       1.00      1.00      1.00         2
+                  cambio_carrera       1.00      1.00      1.00         2
+       consulta_general_admision       1.00      1.00      1.00         2
+consultar_aprobacion_asignaturas       1.00      1.00      1.00         2
+            consultar_asistencia       1.00      1.00      1.00         1
+      consultar_canales_contacto       1.00      1.00      1.00         1
+              consultar_carreras       1.00      1.00      1.00         2
+                consultar_costos       1.00      1.00      1.00         2
+                 consultar_cupos       1.00      1.00      1.00         4
+            consultar_documentos       1.00      1.00      1.00         1
+     consultar_fechas_nivelacion       1.00      1.00      1.00         3
+       consultar_fechas_registro       1.00      1.00      1.00         2
+            consultar_resultados       1.00      1.00      1.00         2
+                       despedida       1.00      1.00      1.00         1
+        explicar_creacion_cuenta       1.00      1.00      1.00         4
+                        fallback       1.00      1.00      1.00         2
+   preguntar_requisitos_admision       1.00      1.00      1.00         4
+                problemas_portal       1.00      1.00      1.00         2
+                recuperar_cuenta       1.00      1.00      1.00         3
+                          saludo       1.00      1.00      1.00         3
+
+                        accuracy                           1.00        47
+                       macro avg       1.00      1.00      1.00        47
+                    weighted avg       1.00      1.00      1.00        47
+
+=== Barrido de umbrales de confianza ===
+
+Umbral   Accuracy   F1-macro  
+------------------------------
+0.20     0.979      0.975     
+0.25     0.979      0.975     
+0.28     0.979      0.975     
+0.30     0.979      0.975     
+0.35     0.979      0.975     
+0.40     0.979      0.975     
+0.45     1.000      1.000     
+0.50     1.000      1.000     
