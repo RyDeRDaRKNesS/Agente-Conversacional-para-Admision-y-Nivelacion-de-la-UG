@@ -81,11 +81,35 @@
   }
 
   #chat {
+    position: relative;
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 14px;
   }
+
+  /* Marca de agua: logo institucional de la UG, centrado y de fondo,
+     detrás de las burbujas del chat. Se usa un pseudo-elemento en vez de
+     un <img> para que quede fuera del flujo de contenido y no interfiera
+     con la lectura de los mensajes (pointer-events: none). */
+  #chat::before {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: min(70vw, 380px);
+    height: min(70vw, 380px);
+    transform: translate(-50%, -50%);
+    background-image: url("https://www.ug.edu.ec/wp-content/uploads/2023/08/logo-01-free-img.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  #chat .msg { position: relative; z-index: 1; }
 
   .msg {
     max-width: 82%;
@@ -192,9 +216,9 @@
 <body>
 
 <header>
-  <div class="eyebrow">Universidad de Guayaquil · Admisión y Nivelación</div>
-  <h1>Asistente Virtual de Admisión</h1>
-  <p>Prototipo académico de PLN clásico — no sustituye al portal oficial</p>
+  <div class="eyebrow">Universidad de Guayaquil · Facultad de Ciencias Matemáticas y Físicas</div>
+  <h1>UG Asiste · Admisión y Nivelación</h1>
+  <p>Agente conversacional de PLN clásico — no sustituye al portal oficial</p>
 </header>
 
 <main>

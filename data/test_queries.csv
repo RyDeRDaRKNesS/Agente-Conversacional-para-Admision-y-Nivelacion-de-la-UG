@@ -2,6 +2,9 @@ consulta,intent_esperado
 "hola buenas",saludo
 "q tal",saludo
 "aloo",saludo
+"holi",saludo
+"hi",saludo
+"hello",saludo
 "cuales son los requisitos de admision",preguntar_requisitos_admision
 "q necesito pa inscribirme en la u",preguntar_requisitos_admision
 "requicitos de amision",preguntar_requisitos_admision

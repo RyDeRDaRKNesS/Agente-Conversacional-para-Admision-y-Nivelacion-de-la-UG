@@ -5,7 +5,7 @@ frecuentes sobre admisión y nivelación de la Universidad de Guayaquil.
 Proyecto académico — Trabajo Parcial II, materia de Procesamiento de
 Lenguaje Natural.
 
-> ⚠️ El enunciado indica que **no se requiere despliegue en producción**.
+> El enunciado indica que **no se requiere despliegue en producción**.
 > Los archivos de despliegue (Render/PythonAnywhere) incluidos aquí son un
 > extra, no un requisito de la rúbrica.
 
