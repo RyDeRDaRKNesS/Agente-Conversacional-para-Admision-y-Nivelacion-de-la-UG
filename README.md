@@ -138,7 +138,7 @@ para el detalle completo y el reporte por clase.
 > arrancar el proceso (ver `src/app.py`), para que el ajuste de ambos
 > vectorizadores TF-IDF no se repita en cada consulta.
 
-## Justificación (Sección 7 del enunciado) — guía rápida
+## Justificación 
 
 - **a) TF-IDF vs. bolsa de palabras:** el factor IDF reduce el peso de
   palabras muy frecuentes en todo el corpus (p. ej. "admision",
