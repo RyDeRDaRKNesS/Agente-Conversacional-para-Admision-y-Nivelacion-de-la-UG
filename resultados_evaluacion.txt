@@ -3,9 +3,12 @@
 
 Consulta                                   Esperado                       Detectado                      Conf. 
 ----------------------------------------------------------------------------------------------------------------
-[OK ] hola buenas                            saludo                         saludo                         0.706
+[OK ] hola buenas                            saludo                         saludo                         0.707
 [OK ] q tal                                  saludo                         saludo                         0.960
 [OK ] aloo                                   saludo                         saludo                         1.000
+[OK ] holi                                   saludo                         saludo                         1.000
+[OK ] hi                                     saludo                         saludo                         1.000
+[OK ] hello                                  saludo                         saludo                         1.000
 [OK ] cuales son los requisitos de admision  preguntar_requisitos_admision  preguntar_requisitos_admision  1.000
 [OK ] q necesito pa inscribirme en la u      preguntar_requisitos_admision  preguntar_requisitos_admision  1.000
 [OK ] requicitos de amision                  preguntar_requisitos_admision  preguntar_requisitos_admision  1.000
@@ -48,11 +51,11 @@ Consulta                                   Esperado                       Detect
 [OK ] gracias por la ayuda                   agradecimiento                 agradecimiento                 1.000
 [OK ] muchas gracias por ayudarme            agradecimiento                 agradecimiento                 1.000
 [OK ] adios nos vemos                        despedida                      despedida                      0.720
-[ERR] me puedes recomendar una laptop        fallback                       consultar_fechas_registro      0.404
+[ERR] me puedes recomendar una laptop        fallback                       consultar_fechas_registro      0.405
 [OK ] xyxyxy asdasd 123123                   fallback                       fallback                       0.043
 
 ==================================================
-Accuracy (umbral 0.25) : 0.979
+Accuracy (umbral 0.25) : 0.980
 F1-macro (umbral 0.25) : 0.975
 ==================================================
 
@@ -80,21 +83,21 @@ consultar_aprobacion_asignaturas       1.00      1.00      1.00         2
    preguntar_requisitos_admision       1.00      1.00      1.00         4
                 problemas_portal       1.00      1.00      1.00         2
                 recuperar_cuenta       1.00      1.00      1.00         3
-                          saludo       1.00      1.00      1.00         3
+                          saludo       1.00      1.00      1.00         6
 
-                        accuracy                           0.98        47
-                       macro avg       0.98      0.98      0.97        47
-                    weighted avg       0.99      0.98      0.98        47
+                        accuracy                           0.98        50
+                       macro avg       0.98      0.98      0.97        50
+                    weighted avg       0.99      0.98      0.98        50
 
 === Barrido de umbrales de confianza ===
 
 Umbral   Accuracy   F1-macro  
 ------------------------------
-0.20     0.979      0.975     
-0.25     0.979      0.975       <- valor usado en producción
-0.28     0.979      0.975     
-0.30     0.979      0.975     
-0.35     0.979      0.975     
-0.40     0.979      0.975     
+0.20     0.980      0.975     
+0.25     0.980      0.975       <- valor usado en producción
+0.28     0.980      0.975     
+0.30     0.980      0.975     
+0.35     0.980      0.975     
+0.40     0.980      0.975     
 0.45     1.000      1.000     
 0.50     1.000      1.000     

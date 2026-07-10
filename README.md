@@ -30,7 +30,7 @@ red de seguridad ortográfica sobre la primera.
 ug-chatbot/
 ├── data/
 │   ├── intents.json          # RF-01: 21 intenciones, utterances, respuestas y fuente/url
-│   └── test_queries.csv      # RF-08: 47 consultas de prueba etiquetadas
+│   └── test_queries.csv      # RF-08: 50 consultas de prueba etiquetadas
 ├── src/
 │   ├── preprocessing.py      # RF-02: limpieza, stopwords, stemming
 │   ├── entities.py           # RF-05: fechas, cédula (con validación módulo 10), carreras, términos
@@ -41,6 +41,7 @@ ug-chatbot/
 ├── templates/
 │   └── index.html            # Frontend del chat web
 ├── resultados_evaluacion.txt # Generado por evaluate.py (evidencia para el informe)
+├── Informe_P2.pdf             # Informe escrito (3-4 páginas) requerido por el enunciado
 ├── wsgi.py                   # Punto de entrada para producción (Render)
 ├── Procfile                  # Comando de arranque para Render
 ├── render.yaml                # Configuración declarativa opcional de Render
@@ -78,12 +79,12 @@ python evaluate.py
 
 ## Resultados de evaluación
 
-Sobre las 47 consultas de `data/test_queries.csv` (incluyendo variantes con
+Sobre las 50 consultas de `data/test_queries.csv` (incluyendo variantes con
 errores tipográficos, ambigüedad y consultas fuera de dominio), con el
 umbral de producción `UMBRAL_CONFIANZA = 0.25`:
 
 ```
-Accuracy : 0.979
+Accuracy : 0.980
 F1-macro : 0.975
 ```
 
@@ -164,7 +165,7 @@ para el detalle completo y el reporte por clase.
   fuera de dominio comparte subcadenas cortas con utterances de
   entrenamiento (ej. una entrada sin sentido que contiene el fragmento
   "signif" empareja parcialmente con "cupo aceptado ¿qué **signif**ica?").
-- El set de prueba (47 consultas) es reducido frente al universo real de
+- El set de prueba (50 consultas) es reducido frente al universo real de
   formas en que un estudiante puede escribir una pregunta; un umbral que
   luce óptimo aquí podría no generalizar igual ante un volumen mayor de
   tráfico real.
